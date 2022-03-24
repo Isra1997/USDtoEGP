@@ -3,7 +3,6 @@ const Joi = require('joi');
 const phoneNumberValidator = Joi.extend(require('joi-phone-number'));
 const router = express.Router();
 const Redis = require('redis');
-const { MediaInstance } = require('twilio/lib/rest/api/v2010/account/message/media');
 const redisClient = Redis.createClient();
 
 router.post('/',async(req,res)=>{

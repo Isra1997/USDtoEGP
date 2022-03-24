@@ -4,6 +4,8 @@ const { ToadScheduler, SimpleIntervalJob, Task } = require('toad-scheduler');
 const axios = require('axios');
 require('dotenv').config();
 const client = require('twilio')(process.env.TWILIO_ACCOUNT_SID,process.env.TWILIO_AUTH_TOKEN);
+//Currency converting package
+var currencyConverterLt = require("currency-converter-lt");
 //Runs a check every 5 hours(18000)
 const DEFAULT_UPDATE_DURATION = 20;
 //Schedular 
@@ -11,11 +13,11 @@ const scheduler = new ToadScheduler();
 
 router.get('/startservice',async(req,res)=>{
     const task = new Task('simple task', () => { 
-    axios.get(process.env.BASE_URL)
+    currencyConverter.convert()
     .then(async(res)=>{
-        console.log(res.data.conversion_rates.EGP);
+        console.log(res);
         const message = await client.messages.create({
-            body: "1 Dollar = "+res.data.conversion_rates.EGP+" EGP",
+            body: "1 Dollar = "+res+" EGP",
             from:"whatsapp:+14155238886",
             to:"whatsapp:+201064486639"
         })
@@ -26,7 +28,7 @@ router.get('/startservice',async(req,res)=>{
    });
     const job = new SimpleIntervalJob({ seconds: DEFAULT_UPDATE_DURATION, }, task)
     scheduler.addSimpleIntervalJob(job)
-    res.send("The service has started.");
+    res.send("The service has started.")
 })
 
 router.get("/stopservice",(req,res)=>{
