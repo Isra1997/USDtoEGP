@@ -4,6 +4,9 @@ const phoneNumberValidator = Joi.extend(require('joi-phone-number'));
 const router = express.Router();
 const Redis = require('redis');
 const redisClient = Redis.createClient();
+const qrcode = require('qrcode-terminal');
+const { Client } = require('whatsapp-web.js');
+const client = new Client();
 
 router.post('/',async(req,res)=>{
     //format the mobile number
@@ -25,9 +28,11 @@ router.post('/',async(req,res)=>{
     });
 });
 
+
 function formatPhoneNumber(number){
     const isValid = phoneNumberValidator.string().min(10).max(11).phoneNumber({ defaultCountry: 'EG', format: 'e164' }).validate(number);
     return isValid;
 }
 
-module.exports = router
+
+module.exports = router;

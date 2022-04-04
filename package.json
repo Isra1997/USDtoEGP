@@ -2,19 +2,20 @@
   "dependencies": {
     "authy": "^1.4.0",
     "axios": "^0.26.1",
-    "cheerio": "^1.0.0-rc.10",
     "cors": "^2.8.5",
-    "currency-converter-lt": "1.2.4",
+    "currency-converter-lt": "^1.2.3",
     "dotenv": "^16.0.0",
     "express": "^4.17.3",
+    "fs": "0.0.1-security",
     "got": "^11.8.2",
     "i": "^0.3.7",
     "joi": "^17.6.0",
     "joi-phone-number": "^5.1.1",
-    "nodejs-currency-converter": "^1.0.2",
     "npm": "^8.5.5",
+    "qrcode-terminal": "^0.12.0",
     "redis": "^4.0.4",
     "toad-scheduler": "^1.6.0",
-    "twilio": "^3.75.1"
+    "twilio": "^3.75.1",
+    "whatsapp-web.js": "^1.16.4"
   }
 }
