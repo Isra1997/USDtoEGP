@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('partials/head'); %>
+</head>
+<body class="container">
+
+<header>
+    <%- include('partials/header'); %>
+</header>
+<br>
+<main>
+  <div class="jumbotron">
+    <p>unregistered Users:</p>
+    <ul>
+        <% unregistered.forEach(function(instruction) { %>
+          <li>
+            <strong><%= instruction.step %></strong>
+          </li>
+        <% }); %>
+      </ul>
+    <br/>
+    <p>Registered Users:</p>
+    <ul>
+        <% registered.forEach(function(instruction) { %>
+          <li>
+            <strong><%= instruction.step %></strong>
+          </li>
+        <% }); %>
+      </ul>
+  </div>
+</main>
+
+<footer>
+    <%- include('partials/footer'); %>
+</footer>
+
+</body>
+</html>

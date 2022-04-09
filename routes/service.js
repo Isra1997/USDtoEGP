@@ -1,4 +1,5 @@
 const express = require('express');
+const app = express();
 const router = express.Router();
 const { ToadScheduler, SimpleIntervalJob, Task } = require('toad-scheduler');
 const axios = require('axios');
@@ -15,6 +16,8 @@ const currencyConverter = new currencyConverterLt({from:"USD",to:"EGP",amount:1}
 //Redis
 const Redis = require("redis");
 const redisClient = Redis.createClient();
+
+
 
 
 
@@ -54,12 +57,26 @@ router.get("/stopservice",(req,res)=>{
     res.send("The service has stoped.")
 })
 
-router.get("/instructions",async(req,res)=>{
-    res.send({
-        step1: "Save the phone number: +14155238886",
-        step2: "Send the 'join town-something' to the numebr saved in step1.",
-        step3: "(optional) to get a report of the change in rate send the message reports to the chatbot."
-    })
+router.get("/about",async(req,res)=>{
+    res.render("pages/about", {
+        unregistered :[
+            {step: "Sign up in with username, password and phone number."},
+            {step: "Save the phone number: +14155238886 in the contacts of your mobile phone."},
+            {step: "Send a text message containing 'join town-something' to the numebr saved in step2."},
+            {step: "Click start service."}
+        ],
+        registered:[
+            {step: "Sign in with username and password"},
+            {step: "Save the phone number: +14155238886 in the contacts of your mobile phone."},
+            {step: "Send a text message containing 'join town-something' to the phone number: +14155238886"},
+            {step: "Click start service."}
+        ]
+    });
+})
+
+
+router.get("/UITest",async(req,res)=>{
+    res.render("pages/signup");
 })
 
 module.exports = router

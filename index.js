@@ -3,7 +3,8 @@ const app = express();
 const cors = require('cors');
 const service = require('./routes/service');
 const users = require('./routes/users');
-
+//set the app  view engine as ejs
+app.set('view engine','ejs');
 
 app.use(cors());
 app.use(express.json())

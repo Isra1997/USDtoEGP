@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('../partials/head'); %>
+</head>
+<body class="container">
+
+<header>
+    <%- include('../partials/header'); %>
+</header>
+<br>
+<main>
+  <div class="jumbotron">
+    <form>
+        <!-- email -->
+        <div class="form-group">
+          <label >Email address</label>
+          <input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter email" required>
+        </div>
+        <!-- username -->
+        <div class="form-group">
+            <label >Username</label>
+            <input type="text" class="form-control" id="username" aria-describedby="emailHelp" placeholder="Enter Username" required>
+          </div>
+        <!-- phone number -->
+        <div class="form-group">
+          <label >Phone Number</label>
+          <input type="test" class="form-control" id="number" placeholder="+02 01065537756" required>
+          <small id="numberHelp" class="form-text text-muted">Please ensure that this number has a whatsapp account set up</small>
+        </div>
+        <!-- password -->
+        <div class="form-group">
+            <label >Password</label>
+            <input type="password" class="form-control" id="password" placeholder="Password" required>
+          </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+    
+    
+  </div>
+</main>
+
+<footer>
+    <%- include('../partials/footer'); %>
+</footer>
+
+</body>
+</html>
